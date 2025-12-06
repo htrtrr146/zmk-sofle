@@ -35,10 +35,10 @@ layers:
   - G
   - $$mdi:arrow-left-bold$$
   - H
-  - J
-  - K
-  - L
-  - {t: ;, s: ':'}
+  - '&hmr LCTRL J'
+  - '&hmr RSHFT K'
+  - '&hmr LALT L'
+  - '&hmr LGUI SEMI'
   - {t: '''', s: '"'}
   - $$mdi:apple-keyboard-shift$$
   - Z
