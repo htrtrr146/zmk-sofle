@@ -28,10 +28,10 @@ layers:
   - P
   - {t: \, s: '|'}
   - $$mdi:apple-keyboard-caps$$
-  - A
-  - S
-  - D
-  - F
+  - '&hml LGUI A'
+  - '&hml LALT S'
+  - '&hml LSHFT D'
+  - '&hml LCTRL F'
   - G
   - $$mdi:arrow-left-bold$$
   - H
