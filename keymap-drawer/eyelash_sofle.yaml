@@ -60,8 +60,8 @@ layers:
   - '&lt_spc 2 0'
   - $$mdi:keyboard-space$$
   - {t: '$$mdi:keyboard-return$$', type: enter}
-  - $$mdi:keyboard-space$$
   - {t: '$$mdi:keyboard-return$$', type: enter}
+  - '&magic_shift LSHFT 0'
   - layer3
   - $$mdi:apple-keyboard-shift$$
   - $$mdi:backspace-reverse-outline$$
