@@ -144,7 +144,7 @@ ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHFT>; wait-ms = <0>;
 &kp TAB     &kp Q          &kp W            &kp F             &kp P           &kp B        &kp DOWN_ARROW   &kp J      &kp L              &kp U              &kp Y            &kp SEMI            &kp BSLH
 &kp CAPS    &hml LGUI A    &hml LALT R      &hml LSHFT S      &hml LCTRL T    &kp G        &kp LEFT_ARROW   &kp M      &hmr LCTRL N       &hmr RSHFT E       &hmr LALT I      &hmr LGUI O         &kp APOS
 &kp LSHFT   &kp Z          &kp X            &kp C             &kp D           &kp V        &kp RIGHT_ARROW  &kp K      &kp H              &kp COMMA          &kp DOT          &kp FSLH            &kp ENTER
-&kp C_MUTE  &kp LCTRL      &kp LEFT_GUI     &kp LEFT_ALT      &lt_spc 2 0     &kp SPACE    &kp ENTER        &kp SPACE  &kp ENTER          &mo 3              &kp RIGHT_SHIFT  &kp DELETE
+&kp C_MUTE  &kp LCTRL      &kp LEFT_GUI     &kp LEFT_ALT      &trans          &trans       &kp ENTER        &trans     &trans             &mo 3              &kp RIGHT_SHIFT  &kp DELETE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
@@ -157,7 +157,7 @@ ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHFT>; wait-ms = <0>;
 &os_lang_only   &kp GRAVE        &mkp LCLK       &mkp MCLK        &mkp RCLK        &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
 &switch_both    &kp TILDE        &trans          &trans           &trans           &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
 &switch_layer   &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11    &kp F12           &trans
-&kp C_MUTE  &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans           &trans           &trans      &trans     &trans
+&kp C_MUTE      &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans           &trans           &trans      &trans     &trans
             >;
 
             display-name = "layer2";
