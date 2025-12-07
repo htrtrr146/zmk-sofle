@@ -90,7 +90,7 @@ layers:
   - L
   - U
   - Y
-  - {t: '''', s: '"'}
+  - {t: ;, s: ':'}
   - {t: \, s: '|'}
   - $$mdi:apple-keyboard-caps$$
   - '&hml LGUI A'
