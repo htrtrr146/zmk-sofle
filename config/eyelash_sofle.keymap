@@ -15,6 +15,14 @@
 
 #define QUICK_TAP_MS 175
 
+#define RUS 0
+#define DEF 1
+#define NAV 2
+#define FN 3
+#define NUM 4
+#define SYS 5
+#define MOUSE 6
+
 &sk {
   release-after-ms = <900>;
   quick-release;
