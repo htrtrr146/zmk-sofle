@@ -64,12 +64,34 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
 #include "leader.dtsi"
 #include "mouse.dtsi"
 
-// Smart-mouse, requires tri-state module.
-ZMK_TRI_STATE(
-    smart_mouse, bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
-    ignored-key-positions =
-        <LT1 LT2 LH0 LH1 RT1 RT2 RT3 RM0 RM1 RM2 RM3 RM4 RB1 RB2 RB3 RH0 RH1>;
-    ignored-layers = <MOUSE NAV FN>;)
+/* Nav cluster */
+
+// Trigger tap-action on all interrupts.
+#define MT_CORE                                                                \
+  flavor = "tap-preferred";                                                    \
+  tapping-term-ms = <220>;                                                     \
+  quick-tap-ms = <220>;                                                        \
+  hold-trigger-key-positions = <0>;
+
+&mt { MT_CORE };
+
+ZMK_HOLD_TAP(mt_home, bindings = <&masked_home>, <&kp>; MT_CORE)
+ZMK_HOLD_TAP(mt_end, bindings = <&masked_end>, <&kp>; MT_CORE)
+
+#define NAV_LEFT  &mt_home 0   LEFT  // Tap: left  | Long-tap: start of line.
+#define NAV_RIGHT &mt_end 0    RIGHT // Tap: right | Long-tap: end   of line.
+#define NAV_UP    &mt LC(HOME) UP    // Tap: up    | Long-tap: start of doc.
+#define NAV_DOWN  &mt LC(END)  DOWN  // Tap: down  | Long-tap: end   of doc.
+#define NAV_BSPC  &mt LC(BSPC) BSPC  // Tap: bspc  | Long-tap: delete word bwd.
+#define NAV_DEL   &mt LC(DEL)  DEL   // Tap: del   | Long-tap: delete word fwd.
+
+// Mask CTRL on left/right hold to avoid accidental jumps to start/end of doc.
+#define MASK_MODS(NAME, MODS, BINDING)                                         \
+  ZMK_MOD_MORPH(NAME, bindings = <BINDING>, <BINDING>; mods = <MODS>;)
+
+MASK_MODS(masked_home, (MOD_LCTL), &kp HOME)
+MASK_MODS(masked_end,  (MOD_LCTL), &kp END)
+
 
 /* Magic-shift & auto-layers */
 
@@ -95,6 +117,22 @@ ZMK_ADAPTIVE_KEY(
 &caps_word { // Mods deactivate caps-word, requires PR #1451. [TODO: rebase]
   /delete-property/ ignore-modifiers;
 };
+
+// Tap: num-word | double-tap: sticky num-layer | Hold: num-layer.
+#define SMART_NUM &smart_num NUM 0
+ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
+             tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
+ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
+              tapping-term-ms = <200>;)
+
+// Smart-mouse, requires tri-state module.
+ZMK_TRI_STATE(
+    smart_mouse, bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
+    ignored-key-positions =
+        <LT1 LT2 LH0 LH1 RT1 RT2 RT3 RM0 RM1 RM2 RM3 RM4 RB1 RB2 RB3 RH0 RH1>;
+    ignored-layers = <MOUSE NAV FN>;)
+
+/* Custom behaviors */
 
 // Tap: space | Shift + tap: dot -> space -> sticky shift | Hold: nav layer.
 ZMK_HOLD_TAP(lt_spc, bindings = <&mo>, <&spc_morph>; flavor = "balanced";
@@ -189,15 +227,15 @@ ZMK_MACRO(leader_sft, bindings = <&sk LSHFT &leader>;)
 
         layer_0 {
             bindings = <
-&kp ESC     &kp N1         &kp N2           &kp N3            &kp N4          &kp N5       &kp UP_ARROW     &kp N6     &kp N7             &kp N8             &kp N9           &kp N0              &kp BACKSPACE
-&kp TAB     &kp Q          &kp W            &kp E             &kp R           &kp T        &kp DOWN_ARROW   &kp Y      &kp U              &kp I              &kp O            &kp P               &kp BSLH
-&kp CAPS    &hml LGUI A    &hml LALT S      &hml LSHFT D      &hml LCTRL F    &kp G        &kp LEFT_ARROW   &kp H      &hmr LCTRL J       &hmr RSHFT K       &hmr LALT L      &hmr LGUI SEMI      &kp APOS
-&kp LSHFT   &kp Z          &kp X            &kp C             &kp V           &kp B        &kp RIGHT_ARROW  &kp N      &kp M              &kp COMMA          &kp DOT          &kp FSLH            &kp ENTER
-&kp C_MUTE  &kp LCTRL      &kp LEFT_GUI     &kp LEFT_ALT      &lt_spc 2 0     &kp SPACE    &kp ENTER        &kp ENTER  MAGIC_SHIFT        &mo 3              &kp RIGHT_SHIFT  &kp DELETE
+&kp ESC     &kp N1         &kp N2           &kp N3            &kp N4            &kp N5       &kp UP_ARROW     &kp N6     &kp N7             &kp N8             &kp N9           &kp N0              &kp BACKSPACE
+&kp TAB     &kp Q          &kp W            &kp E             &kp R             &kp T        &kp DOWN_ARROW   &kp Y      &kp U              &kp I              &kp O            &kp P               &kp BSLH
+&kp CAPS    &hml LGUI A    &hml LALT S      &hml LSHFT D      &hml LCTRL F      &kp G        &kp LEFT_ARROW   &kp H      &hmr LCTRL J       &hmr RSHFT K       &hmr LALT L      &hmr LGUI SEMI      &kp APOS
+&kp LSHFT   &kp Z          &kp X            &kp C             &kp V             &kp B        &kp RIGHT_ARROW  &kp N      &kp M              &kp COMMA          &kp DOT          &kp FSLH            &kp ENTER
+&kp C_MUTE  &mo 4          &kp LEFT_GUI     &kp LEFT_ALT      &lt_spc NAV 0     &kp SPACE    &kp ENTER        &kp ENTER  MAGIC_SHIFT        &mo 3              &mo 4            &kp DELETE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
-            display-name = "LAYER0";
+            display-name = "QWERTY";
         };
 
         layer_1 {
@@ -206,23 +244,23 @@ ZMK_MACRO(leader_sft, bindings = <&sk LSHFT &leader>;)
 &kp TAB     &kp Q          &kp W            &kp F             &kp P           &kp B        &kp DOWN_ARROW   &kp J      &kp L              &kp U              &kp Y            &kp SEMI            &kp BSLH
 &kp CAPS    &hml LGUI A    &hml LALT R      &hml LSHFT S      &hml LCTRL T    &kp G        &kp LEFT_ARROW   &kp M      &hmr LCTRL N       &hmr RSHFT E       &hmr LALT I      &hmr LGUI O         &kp APOS
 &kp LSHFT   &kp Z          &kp X            &kp C             &kp D           &kp V        &kp RIGHT_ARROW  &kp K      &kp H              &kp COMMA          &kp DOT          &kp FSLH            &kp ENTER
-&kp C_MUTE  &kp LCTRL      &kp LEFT_GUI     &kp LEFT_ALT      &trans          &trans       &kp ENTER        &trans     &trans             &mo 3              &kp RIGHT_SHIFT  &kp DELETE
+&kp C_MUTE  &trans         &kp LEFT_GUI     &kp LEFT_ALT      &trans          &trans       &kp ENTER        &trans     &trans             &trans             &trans           &kp DELETE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
-            display-name = "LAYER1";
+            display-name = "COLEMAK";
         };
 
         layer_2 {
             bindings = <
-&kp GRAVE       &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &mmv MOVE_UP     &kp F6           &kp F7           &kp F8      &kp F9     &kp F10           &trans
-&os_lang_only   &kp GRAVE        &mkp LCLK       &mkp MCLK        &mkp RCLK        &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
-&switch_both    &kp TILDE        &trans          &trans           &trans           &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
-&switch_layer   &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11    &kp F12           &trans
-&kp C_MUTE      &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans           &trans           &trans      &trans     &trans
+&kp GRAVE       &kp F1            &kp F2          &kp F3           &kp F4           &kp F5           &mmv MOVE_UP     &kp F6           &kp F7           &kp F8      &kp F9     &kp F10           &trans
+&os_lang_only   &kp LA(F4)        &trans          &kp LS(TAB)      &swapper         &trans           &mmv MOVE_DOWN   &kp PG_UP        NAV_BSPC         NAV_UP      NAV_DEL    &trans            &trans
+&switch_both    &sk LGUI          &sk LALT        &sk LSHFT        &sk LCTRL        &trans           &mmv MOVE_LEFT   &kp PG_DN        NAV_LEFT         NAV_DOWN    NAV_RIGHT  &kp RET           &trans
+&switch_layer   &trans            &trans          &trans           &trans           &trans           &mmv MOVE_RIGHT  &kp INS          &kp TAB          &trans      &trans     &trans            &trans
+&kp C_MUTE      &trans            &trans          &trans           &trans           &trans           &mkp LCLK        &trans           CANCEL           &trans      &trans     &trans
             >;
 
-            display-name = "layer2";
+            display-name = "NAV";
             sensor-bindings = <&scroll_encoder>;
         };
 
@@ -241,11 +279,11 @@ ZMK_MACRO(leader_sft, bindings = <&sk LSHFT &leader>;)
 
         layer_4 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&kp GRAVE       &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &mmv MOVE_UP     &kp F6           &kp F7           &kp F8      &kp F9     &kp F10           &trans
+&os_lang_only   &kp GRAVE        &mkp LCLK       &mkp MCLK        &mkp RCLK        &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
+&switch_both    &kp TILDE        &trans          &trans           &trans           &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
+&switch_layer   &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11    &kp F12           &trans
+&kp C_MUTE      &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans           &trans           &trans      &trans     &trans
             >;
 
             display-name = "layer4";
