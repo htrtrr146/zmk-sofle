@@ -90,7 +90,7 @@ layers:
   - L
   - U
   - Y
-  - {t: ;, s: ':'}
+  - {t: '''', s: '"'}
   - {t: \, s: '|'}
   - $$mdi:apple-keyboard-caps$$
   - '&hml LGUI A'
@@ -114,9 +114,9 @@ layers:
   - $$mdi:arrow-right-bold$$
   - K
   - H
-  - {t: ',', s: <}
-  - {t: ., s: '>'}
-  - {t: /, s: '?'}
+  - '&comma_morph'
+  - '&dot_morph'
+  - '&qexcl'
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - $$mdi:volume-off$$
   - {t: '$$mdi:transfer$$', type: trans}
