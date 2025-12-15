@@ -141,6 +141,17 @@ ZMK_TRI_STATE(swapper, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
   ZMK_MOD_MORPH(NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                      \
                 bindings = <BINDING1>, <BINDING2>;)
 
+// Tap: comma | Shift + tap: semicolon | Ctrl + shift + tap: <.
+SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &comma_inner_morph)
+SIMPLE_MORPH(comma_inner_morph, CTL, &kp SEMICOLON, &kp LESS_THAN)
+
+// Tap: dot | Shift + tap: colon | Ctrl + shift + tap: >.
+SIMPLE_MORPH(dot_morph, SFT, &kp DOT, &dot_inner_morph)
+SIMPLE_MORPH(dot_inner_morph, CTL, &kp COLON, &kp GREATER_THAN)
+
+// Tap: qmark | Shift + tap: excl.
+SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
+
 // Tap: space | Shift + tap: dot -> space -> sticky shift | Hold: nav layer.
 ZMK_HOLD_TAP(lt_spc, bindings = <&mo>, <&spc_morph>; flavor = "balanced";
              tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
@@ -258,9 +269,9 @@ ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS)
         layer_1 {
             bindings = <
 &kp ESC     &kp N1         &kp N2           &kp N3            &kp N4          &kp N5       &kp UP_ARROW     &kp N6     &kp N7             &kp N8             &kp N9           &kp N0              &kp BACKSPACE
-&kp TAB     &kp Q          &kp W            &kp F             &kp P           &kp B        &kp DOWN_ARROW   &kp J      &kp L              &kp U              &kp Y            &kp SEMI            &kp BSLH
+&kp TAB     &kp Q          &kp W            &kp F             &kp P           &kp B        &kp DOWN_ARROW   &kp J      &kp L              &kp U              &kp Y            &kp SQT             &kp BSLH
 &kp CAPS    &hml LGUI A    &hml LALT R      &hml LSHFT S      &hml LCTRL T    &kp G        &kp LEFT_ARROW   &kp M      &hmr LCTRL N       &hmr RSHFT E       &hmr LALT I      &hmr LGUI O         &kp APOS
-&kp LSHFT   &kp Z          &kp X            &kp C             &kp D           &kp V        &kp RIGHT_ARROW  &kp K      &kp H              &kp COMMA          &kp DOT          &kp FSLH            &kp ENTER
+&kp LSHFT   &kp Z          &kp X            &kp C             &kp D           &kp V        &kp RIGHT_ARROW  &kp K      &kp H              &comma_morph       &dot_morph       &qexcl              &kp ENTER
 &kp C_MUTE  &trans         &kp LEFT_GUI     &kp LEFT_ALT      &trans          &trans       &kp ENTER        &trans     &trans             &trans             &trans           &kp DELETE
             >;
 
