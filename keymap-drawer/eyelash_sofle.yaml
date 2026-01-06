@@ -26,7 +26,7 @@ layers:
   - I
   - O
   - P
-  - {t: \, s: '|'}
+  - {t: '[', s: '{'}
   - $$mdi:apple-keyboard-caps$$
   - '&hml LGUI A'
   - '&hml LALT S'
@@ -52,7 +52,7 @@ layers:
   - {t: ',', s: <}
   - {t: ., s: '>'}
   - {t: /, s: '?'}
-  - {t: '$$mdi:keyboard-return$$', type: enter}
+  - {t: ']', s: '}'}
   - $$mdi:volume-off$$
   - sf2
   - $$mdi:apple-keyboard-command$$
