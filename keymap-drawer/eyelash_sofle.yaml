@@ -153,9 +153,9 @@ layers:
   - {t: '$$mdi:menu-down$$', s: '$$mdi:mouse$$'}
   - PG UP
   - {t: '$$mdi:backspace$$', h: 'Ctl+$$mdi:backspace$$'}
-  - {t: '$$mdi:arrow-up-bold$$', h: Ctl+HOME}
+  - $$mdi:arrow-up-bold$$
   - {t: '$$mdi:backspace-reverse-outline$$', h: 'Ctl+$$mdi:backspace-reverse-outline$$'}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - HOME
   - {t: '$$mdi:transfer$$', type: trans}
   - '&switch_both'
   - {t: LGUI, h: '$$mdi:gesture-tap-hold$$'}
@@ -166,7 +166,7 @@ layers:
   - {t: '$$mdi:menu-left$$', s: '$$mdi:mouse$$'}
   - PG DN
   - '&mt_home 0 LEFT'
-  - {t: '$$mdi:arrow-down-bold$$', h: Ctl+END}
+  - $$mdi:arrow-down-bold$$
   - '&mt_end 0 RIGHT'
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -181,7 +181,7 @@ layers:
   - $$mdi:keyboard-tab$$
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - END
   - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:volume-off$$
   - {t: '$$mdi:transfer$$', type: trans}
