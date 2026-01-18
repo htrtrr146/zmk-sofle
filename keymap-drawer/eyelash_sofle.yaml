@@ -27,7 +27,7 @@ layers:
   - O
   - P
   - {t: '[', s: '{'}
-  - $$mdi:apple-keyboard-caps$$
+  - '&switch_both'
   - '&hml LGUI A'
   - '&hml LALT S'
   - '&hml LSHFT D'
@@ -92,7 +92,7 @@ layers:
   - Y
   - {t: '''', s: '"'}
   - {t: \, s: '|'}
-  - $$mdi:apple-keyboard-caps$$
+  - '&switch_both'
   - '&hml LGUI A'
   - '&hml LALT R'
   - '&hml LSHFT S'
