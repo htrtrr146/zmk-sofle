@@ -57,7 +57,7 @@ layers:
   - sf2
   - $$mdi:apple-keyboard-command$$
   - $$mdi:apple-keyboard-option$$
-  - '&lt_spc 2 0'
+  - {t: '$$mdi:keyboard-space$$', h: NAV}
   - {t: '$$mdi:keyboard-return$$', h: FN}
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - '&smart_num 4 0'
@@ -187,7 +187,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {type: held}
   - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:mouse-left-click-outline$$
   - {t: '$$mdi:transfer$$', type: trans}
