@@ -153,8 +153,8 @@ SIMPLE_MORPH(dot_inner_morph, CTL, &kp COLON, &kp GREATER_THAN)
 SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
 
 // Tap: space | Shift + tap: dot -> space -> sticky shift | Hold: nav layer.
-ZMK_HOLD_TAP(lt_spc, bindings = <&mo>, <&spc_morph>; flavor = "balanced";
-             tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
+// ZMK_HOLD_TAP(lt_spc, bindings = <&mo>, <&spc_morph>; flavor = "balanced";
+//             tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
 // SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &dot_spc)
 // ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHFT>; wait-ms = <10>;
 //          tap-ms = <10>;)
@@ -259,7 +259,7 @@ ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS)
 &kp TAB         &kp Q          &kp W            &kp E             &kp R             &kp T        &kp DOWN_ARROW   &kp Y      &kp U              &kp I              &kp O            &kp P               &kp LBKT
 &switch_both    &hml LGUI A    &hml LALT S      &hml LSHFT D      &hml LCTRL F      &kp G        &kp LEFT_ARROW   &kp H      &hmr LCTRL J       &hmr RSHFT K       &hmr LALT L      &hmr LGUI SEMI      &kp SQT
 &kp LSHFT       &kp Z          &kp X            &kp C             &kp V             &kp B        &kp RIGHT_ARROW  &kp N      &kp M              &kp COMMA          &kp DOT          &kp FSLH            &kp RBKT
-&kp C_MUTE      &mo 8          &kp LEFT_GUI     &kp LEFT_ALT      &lt_spc NAV 0     &lt FN RET   &kp ENTER        SMART_NUM  MAGIC_SHIFT        &mo 7              &mo 8            &kp DELETE
+&kp C_MUTE      &mo 8          &kp LEFT_GUI     &kp LEFT_ALT      &lt NAV SPACE     &lt FN RET   &kp ENTER        SMART_NUM  MAGIC_SHIFT        &mo 7              &mo 8            &kp DELETE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
