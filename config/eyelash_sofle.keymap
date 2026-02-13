@@ -123,6 +123,9 @@ ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
 ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
               tapping-term-ms = <200>;)
 
+ZMK_HOLD_TAP(ltmux, bindings = <&mo>, <&tmux_prefix>; flavor = "balanced";
+              tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
+
 // Smart-mouse, requires tri-state module.
 ZMK_TRI_STATE(
     smart_mouse, bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
@@ -340,8 +343,6 @@ ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS)
             bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>;
         };
     };
-
-    ZMK_HOLD_TAP(ltmux, bindings = <&mo>, <&tmux_prefix>; flavor = "balanced"; tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
 
     combos {
         compatible = "zmk,combos";
