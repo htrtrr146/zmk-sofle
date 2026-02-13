@@ -240,70 +240,108 @@ ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS)
                 <&macro_release &tog 1>;
         };
 
-        /*
-         * Macro to switch tmux pane: LEFT
-         * Sequence: Press Ctrl+B, then Tap Left Arrow
-         */
-        tmux_left: tmux_left {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <10>;
-            tap-ms = <10>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp B>
-                , <&macro_release &kp LCTRL>
-                , <&macro_tap &kp LEFT>;
-        };
-
-        /*
-         * Macro to switch tmux pane: DOWN
-         * Sequence: Press Ctrl+B, then Tap Down Arrow
-         */
-        tmux_down: tmux_down {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <10>;
-            tap-ms = <10>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp B>
-                , <&macro_release &kp LCTRL>
-                , <&macro_tap &kp DOWN>;
-        };
-
-        /*
-         * Macro to switch tmux pane: UP
-         * Sequence: Press Ctrl+B, then Tap Up Arrow
-         */
+        /* --- NAVIGATION --- */
         tmux_up: tmux_up {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <10>;
-            tap-ms = <10>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp B>
-                , <&macro_release &kp LCTRL>
-                , <&macro_tap &kp UP>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp UP>;
         };
-
-        /*
-         * Macro to switch tmux pane: RIGHT
-         * Sequence: Press Ctrl+B, then Tap Right Arrow
-         */
+        tmux_down: tmux_down {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp DOWN>;
+        };
+        tmux_left: tmux_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp LEFT>;
+        };
         tmux_right: tmux_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <10>;
-            tap-ms = <10>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp B>
-                , <&macro_release &kp LCTRL>
-                , <&macro_tap &kp RIGHT>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp RIGHT>;
+        };
+
+        /* --- SPLITS & LAYOUT --- */
+        tmux_h_split: tmux_h_split { // Horizontal Split (Prefix + ")
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp DQT>;
+        };
+        tmux_v_split: tmux_v_split { // Vertical Split (Prefix + %)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp PRCNT>;
+        };
+        tmux_zoom: tmux_zoom { // Toggle Zoom (Prefix + z)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp Z>;
+        };
+
+        /* --- WINDOWS & SESSIONS --- */
+        tmux_tree: tmux_tree { // Choose Tree/Session (Prefix + s)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp S>;
+        };
+        tmux_win_prev: tmux_win_prev { // Previous Window (Prefix + p)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp P>;
+        };
+        tmux_win_next: tmux_win_next { // Next Window (Prefix + n)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp N>;
+        };
+
+        /* --- UTILS --- */
+        tmux_copy: tmux_copy { // Copy Mode (Prefix + [)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp LBKT>;
+        };
+        tmux_cmd: tmux_cmd { // Command Prompt (Prefix + :)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp COLON>;
+        };
+        tmux_swap: tmux_swap { // Swap Pane (Prefix + {)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp LBRC>;
+        };
+        tmux_kill: tmux_kill { // Kill Pane (Prefix + x)
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>, <&macro_tap &kp X>;
+        };
+        
+        // Pure Prefix (just Ctrl+B)
+        tmux_prefix: tmux_prefix {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>; tap-ms = <10>;
+            bindings = <&macro_press &kp LCTRL>, <&macro_tap &kp B>, <&macro_release &kp LCTRL>;
         };
     };
+
+    ZMK_HOLD_TAP(ltmux, bindings = <&mo>, <&tmux_prefix>; flavor = "balanced"; tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
 
     combos {
         compatible = "zmk,combos";
@@ -347,7 +385,7 @@ ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS)
             bindings = <
 &kp GRAVE       &kp F1            &kp F2          &kp F3           &kp F4           &kp F5           &mmv MOVE_UP     &kp F6           &kp F7           &kp F8          &kp F9       &kp F10           &trans
 &os_lang_only   &kp LA(F4)        &trans          &kp LS(TAB)      &swapper         &trans           &mmv MOVE_DOWN   &kp PG_UP        NAV_BSPC         &kp UP          NAV_DEL      &kp HOME          &trans
-&switch_both    &sk LGUI          &sk LALT        &sk LSHFT        &sk LCTRL        &mo 7            &mmv MOVE_LEFT   &kp PG_DN        NAV_LEFT         &kp DOWN        NAV_RIGHT    &kp RET           &trans
+&switch_both    &sk LGUI          &sk LALT        &sk LSHFT        &sk LCTRL        &ltmux 7 0       &mmv MOVE_LEFT   &kp PG_DN        NAV_LEFT         &kp DOWN        NAV_RIGHT    &kp RET           &trans
 &switch_layer   &trans            &trans          &trans           &trans           &trans           &mmv MOVE_RIGHT  &kp INS          &kp TAB          &comma_morph    &dot_morph   &kp END           &trans
 &kp C_MUTE      &trans            &trans          &trans           &trans           &trans           &mkp LCLK        &trans           CANCEL           &trans          &trans       &trans
             >;
@@ -411,9 +449,9 @@ ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS)
         layer_7 {
             bindings = <
 &trans          &trans            &trans          &trans           &trans           &trans           &mmv MOVE_UP       &trans           &trans           &trans          &trans          &trans            &trans
-&trans          &trans            &trans          &trans           &trans           &trans           &mmv MOVE_DOWN     &trans           &trans           &tmux_up        &trans          &trans            &trans
-&trans          &trans            &trans          &trans           &trans           &trans           &mmv MOVE_LEFT     &trans           &tmux_left       &tmux_down      &tmux_right     &trans            &trans
-&trans          &trans            &trans          &trans           &trans           &trans           &mmv MOVE_RIGHT    &trans           &trans           &trans          &trans          &trans            &trans
+&trans          &trans            &trans          &trans           &trans           &trans           &mmv MOVE_DOWN     &tmux_v_split    &tmux_zoom       &tmux_up        &tmux_copy      &tmux_h_split     &trans
+&trans          &trans            &trans          &trans           &trans           &trans           &mmv MOVE_LEFT     &tmux_prefix     &tmux_left       &tmux_down      &tmux_right     &tmux_tree        &trans
+&trans          &trans            &trans          &trans           &trans           &trans           &mmv MOVE_RIGHT    &tmux_cmd        &tmux_win_prev   &tmux_swap      &tmux_win_next  &tmux_kill        &trans
 &trans          &trans            &trans          &trans           &trans           &trans           &mkp LCLK          &trans           &trans           &trans          &trans          &trans
             >;
 
