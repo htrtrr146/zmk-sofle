@@ -58,7 +58,7 @@ layers:
   - $$mdi:keyboard-tab$$
   - $$mdi:keyboard-esc$$
   - {t: '$$mdi:keyboard-space$$', h: NAV}
-  - {t: '$$mdi:keyboard-return$$', h: FN}
+  - {t: '$$mdi:keyboard-tab$$', h: FN}
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - '&smart_num 4 0'
   - '&magic_shift LSHFT 0'
@@ -123,7 +123,7 @@ layers:
   - $$mdi:keyboard-tab$$
   - $$mdi:keyboard-esc$$
   - {t: '$$mdi:keyboard-space$$', h: NAV}
-  - {t: '$$mdi:keyboard-return$$', h: FN}
+  - {t: '$$mdi:keyboard-tab$$', h: FN}
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - '&smart_num 4 0'
   - '&magic_shift LSHFT 0'
@@ -152,9 +152,9 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:menu-down$$', s: '$$mdi:mouse$$'}
   - PG UP
-  - {t: '$$mdi:backspace$$', h: 'Ctl+$$mdi:backspace$$'}
+  - HOME
   - $$mdi:arrow-up-bold$$
-  - {t: '$$mdi:backspace-reverse-outline$$', h: 'Ctl+$$mdi:backspace-reverse-outline$$'}
+  - END
   - HOME
   - {t: '$$mdi:transfer$$', type: trans}
   - '&switch_both'
@@ -168,7 +168,7 @@ layers:
   - '&mt_home 0 LEFT'
   - $$mdi:arrow-down-bold$$
   - '&mt_end 0 RIGHT'
-  - {t: '$$mdi:keyboard-return$$', type: enter}
+  - $$mdi:backspace-reverse-outline$$
   - {t: '$$mdi:transfer$$', type: trans}
   - '&switch_layer'
   - {t: '$$mdi:transfer$$', type: trans}
@@ -178,7 +178,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:menu-right$$', s: '$$mdi:mouse$$'}
   - INS
-  - $$mdi:keyboard-tab$$
+  - {t: '$$mdi:backspace$$', type: backspace}
   - '&comma_morph'
   - '&dot_morph'
   - END
@@ -190,7 +190,7 @@ layers:
   - {type: held}
   - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:mouse-left-click-outline$$
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:keyboard-return$$', type: enter}
   - $$mdi:close-box$$
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
