@@ -149,7 +149,7 @@ layers:
   - $$mdi:keyboard-esc$$
   - $$mdi:keyboard-tab-reverse$$
   - '&swapper'
-  - '&ltmux 7 0'
+  - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: '$$mdi:menu-down$$', s: '$$mdi:mouse$$'}
   - PG UP
   - HOME
@@ -162,7 +162,7 @@ layers:
   - {t: '$$mdi:apple-keyboard-option$$', h: '$$mdi:gesture-tap-hold$$'}
   - {t: '$$mdi:apple-keyboard-shift$$', h: '$$mdi:gesture-tap-hold$$'}
   - {t: '$$mdi:apple-keyboard-control$$', h: '$$mdi:gesture-tap-hold$$'}
-  - {t: '$$mdi:keyboard-return$$', type: enter}
+  - '&ltmux 7 0'
   - {t: '$$mdi:menu-left$$', s: '$$mdi:mouse$$'}
   - PG DN
   - $$mdi:arrow-left-bold$$
