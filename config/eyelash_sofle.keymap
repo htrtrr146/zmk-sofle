@@ -385,8 +385,8 @@ ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS)
         layer_2 {
             bindings = <
 &kp GRAVE       &kp F1            &kp F2          &kp F3           &kp F4           &kp F5           &mmv MOVE_UP     &kp F6           &kp F7           &kp F8          &kp F9       &kp F10           &trans
-&os_lang_only   &kp LA(F4)        &kp ESC         &kp LS(TAB)      &swapper         &ltmux 7 0       &mmv MOVE_DOWN   &kp PG_UP        &kp HOME         &kp UP          &kp END      &kp HOME          &trans
-&switch_both    &sk LGUI          &sk LALT        &sk LSHFT        &sk LCTRL        &kp RET          &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN        &kp RIGHT    &kp DEL           &trans
+&os_lang_only   &kp LA(F4)        &kp ESC         &kp LS(TAB)      &swapper         &kp RET          &mmv MOVE_DOWN   &kp PG_UP        &kp HOME         &kp UP          &kp END      &kp HOME          &trans
+&switch_both    &sk LGUI          &sk LALT        &sk LSHFT        &sk LCTRL        &ltmux 7 0       &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN        &kp RIGHT    &kp DEL           &trans
 &switch_layer   &trans            &trans          &trans           &trans           &trans           &mmv MOVE_RIGHT  &kp INS          &kp BACKSPACE    &comma_morph    &dot_morph   &kp END           &trans
 &kp C_MUTE      &trans            &trans          &trans           &trans           &trans           &mkp LCLK        &kp RET          CANCEL           &trans          &trans       &trans
             >;
